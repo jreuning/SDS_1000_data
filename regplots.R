@@ -2,7 +2,7 @@ library(car)
 regPlots <- function(x, y, xlabs = "X", ylabs = "Y", mains = "Plot of X vs Y", stdres = F){
   regdata <- na.omit(data.frame(x, y))
   mod1 <- lm(y ~ x, data = regdata)
-  plot(x, y, data = regdata, pch = 19, col = 'red', xlab = xlabs, ylab = ylabs, main = mains)
+  plot(y ~ x, data = regdata, pch = 19, col = 'red', xlab = xlabs, ylab = ylabs, main = mains)
   abline(mod1$coef, lwd = 3, col = 'blue')
   mtext(paste(ylabs, "=", signif(mod1$coef[1], 3), " + ", signif(mod1$coef[2], 3), "*", xlabs), side = 3, line = 0.5)
   qqp(mod1$residuals, pch = 19, col = 'red', main = "Normal Quantile Plots of Residuals", ylab = ylabs)
