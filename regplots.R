@@ -10,7 +10,7 @@ regPlots <- function(x, y, xlabs = "X", ylabs = "Y", mains = "Plot of X vs Y", s
      abline(h = 0, col = 'blue', lwd = 3)
   }
   else {
-    plot(rstandard(mod1$residuals) ~ fitted(mod1), pch = 19, col = 'red', xlab = "Fitted Values", ylab = "Stand. Resid.", main = "Fits vs. Stand. Resid.")
+    plot(rstandard(mod1) ~ fitted(mod1), pch = 19, col = 'red', xlab = "Fitted Values", ylab = "Stand. Resid.", main = "Fits vs. Stand. Resid.")
     abline(h = 0, col = 'blue', lwd = 3) 
     abline(h = c(-2, 2), col = 'green', lwd = 2, lty = 2) 
     abline(h = c(-3, 3), col = 'red', lwd = 2, lty = 2) 
