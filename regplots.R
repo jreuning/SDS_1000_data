@@ -1,4 +1,5 @@
 library(car)
+library(PerformanceAnalytics)
 regPlots <- function(x, y, xlabs = "X", ylabs = "Y", mains = "Plot of X vs Y", stdres = F, resplots = T, bands = F, xlims = c(NA, NA)) {
   regdata <- na.omit(data.frame(x, y))
   mod1 <- lm(y ~ x, data = regdata)
