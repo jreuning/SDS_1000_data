@@ -125,3 +125,22 @@ matrixPlot <- function (R, histogram = TRUE, method = c("pearson", "kendall",
   return(invisible(p))
 }
 
+
+
+resPlots <- function(model, label){
+  
+  #Normal quantile plot of studentized residuals
+  qqp(rstandard(model), pch = 19, main = paste("NQ Plot of Standardized Residuals,", label))
+  
+  #plot of fitted vs. studentized residuals
+  plot(rstandard(model) ~ model$fitted.values, 
+       pch = 19, 
+       col = 'red', 
+       xlab = "Fitted Values", 
+       ylab = "Studentized Residuals",
+       main = paste("Fits vs. Studentized Residuals,", label))
+  abline(h = 0, lwd = 3)
+  abline(h = c(2,-2), lty = 2, lwd = 2, col="blue")
+  abline(h = c(3,-3), lty = 2, lwd = 2, col="green")
+  
+}
