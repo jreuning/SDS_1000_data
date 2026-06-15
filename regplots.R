@@ -137,8 +137,8 @@ resPlots <- function(model, label){
        pch = 19, 
        col = 'red', 
        xlab = "Fitted Values", 
-       ylab = "Studentized Residuals",
-       main = paste("Fits vs. Studentized Residuals,", label))
+       ylab = "Standardized Residuals",
+       main = paste("Fits vs. Standardized Residuals,", label))
   abline(h = 0, lwd = 3)
   abline(h = c(2,-2), lty = 2, lwd = 2, col="blue")
   abline(h = c(3,-3), lty = 2, lwd = 2, col="green")
