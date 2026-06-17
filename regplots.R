@@ -5,7 +5,7 @@ regPlots <- function(x, y, xlabs = "X", ylabs = "Y", mains = "Plot of X vs Y", f
   mod1 <- lm(y ~ x, data = regdata)
   ylims <-  range(regdata$y)
   if (bands == T){
-    if (is.na(xlims[1])){ newX <-  seq(min(regdata$x), max(regdata$y), length.out = 100) }
+    if (is.na(xlims[1])){ newX <-  seq(min(regdata$x), max(regdata$x), length.out = 100) }
     else { newX <-  seq(xlims[1], xlims[2], length.out = 100)}
     #Make this into a one-variable dataframe.
     ndata <-  data.frame(x = newX)
