@@ -144,10 +144,10 @@ resPlots <- function(model, label){
   abline(h = 0, lwd = 3)
   abline(h = c(2,-2), lty = 2, lwd = 2, col="blue")
   abline(h = c(3,-3), lty = 2, lwd = 2, col="green")
+} 
   
   
-  
-  chi_table <- function(tab) {
+chi_table <- function(tab) {
     # Ensure input is a matrix or table
     tab <- as.matrix(tab)
     
@@ -179,7 +179,7 @@ resPlots <- function(model, label){
       chi_square_test = chi,
       formatted_table = out
     )
-  }
+}
   
   # Run the function
  # result <- chi_table(pines)
@@ -192,4 +192,3 @@ resPlots <- function(model, label){
   
   
   
-}
