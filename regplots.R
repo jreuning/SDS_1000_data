@@ -43,9 +43,11 @@ regPlots <- function(x, y, xlabs = "X", ylabs = "Y", mains = "Plot of X vs Y", f
       abline(h = 0, col = 'blue', lwd = 3) 
       abline(h = c(-2, 2), col = 'green', lwd = 2, lty = 2) 
       abline(h = c(-3, 3), col = 'red', lwd = 2, lty = 2) 
-      text(fitted(mod1)[abs(rstandard(mod1)) > 2], rstandard(mod1)[abs(rstandard(mod1)) > 2], rownames(regdata)[abs(rstandard(mod1)) > 2])
-    }
-  }  
+      if (length(rownames(regdata)[abs(rstandard(mod1)) > 2]) > 0) {
+        text(fitted(mod1)[abs(rstandard(mod1)) > 2], rstandard(mod1)[abs(rstandard(mod1)) > 2], rownames(regdata)[abs(rstandard(mod1)) > 2])
+      }
+    }  
+  }
 }
 
 matrixPlot <- function (R, histogram = TRUE, method = c("pearson", "kendall", 
