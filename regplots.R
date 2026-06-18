@@ -145,4 +145,51 @@ resPlots <- function(model, label){
   abline(h = c(2,-2), lty = 2, lwd = 2, col="blue")
   abline(h = c(3,-3), lty = 2, lwd = 2, col="green")
   
+  
+  
+  chi_table <- function(tab) {
+    # Ensure input is a matrix or table
+    tab <- as.matrix(tab)
+    
+    # Perform chi-square test
+    chi <- chisq.test(tab)
+    
+    # Extract expected counts and contributions
+    expected <- chi$expected
+    contrib  <- (tab - expected)^2 / expected
+    
+    # Build formatted output table
+    out <- matrix("", nrow = nrow(tab), ncol = ncol(tab))
+    for (i in 1:nrow(tab)) {
+      for (j in 1:ncol(tab)) {
+        out[i, j] <- paste0(
+          tab[i, j], 
+          " (", round(expected[i, j], 2), ")", 
+          " [", round(contrib[i, j], 3), "]"
+        )
+      }
+    }
+    
+    # Add row/column names
+    rownames(out) <- rownames(tab)
+    colnames(out) <- colnames(tab)
+    
+    # Return list with test + formatted table
+    list(
+      chi_square_test = chi,
+      formatted_table = out
+    )
+  }
+  
+  # Run the function
+ # result <- chi_table(pines)
+  
+  # View chi-square test
+ # result$chi_square_test
+  
+  # View formatted table
+  #result$formatted_table
+  
+  
+  
 }
