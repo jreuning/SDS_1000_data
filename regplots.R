@@ -1,5 +1,8 @@
 library(car)
 library(PerformanceAnalytics)
+library(plotrix)
+
+
 regPlots <- function(x, y, xlabs = "X", ylabs = "Y", mains = "Plot of X vs Y", fitplot = T, stdres = F, resplots = T, bands = F, xlims = c(NA, NA)) {
   regdata <- na.omit(data.frame(x, y))
   mod1 <- lm(y ~ x, data = regdata)
@@ -189,6 +192,33 @@ chi_table <- function(tab) {
   
   # View formatted table
   #result$formatted_table
-  
+
+
+aov_CI <- function(x, y, label = "AOV"){
+  x <- as.factor(x)
+  modaov <- lm(y ~ x -1)
+  CIs <- confint(modaov)
+  coefs <- coef(modaov)
+  par(mar = c(5,8,4,2))
+  #Make plot - err = "x" makes horizontal
+  plotCI(coefs, 1:(length(coefs)), 
+         ui = CIs[, 2], 
+         li = CIs[,1], 
+         axes = FALSE, 
+         err = "x",
+         ylab = "", 
+         xlab = "Mean (and 95% CI)", 
+         main = paste("Mean and CI's for", label), 
+         lwd = 2, 
+         col = "blue")
+  axis(side = 1)
+    #Put emotion labels on
+  axis(side = 2, at = 1:(length(coefs)), label = levels(x), las = 2)
+  print("Confidence Intervals")
+  print(CIs)
+}
+
+
+
   
   
